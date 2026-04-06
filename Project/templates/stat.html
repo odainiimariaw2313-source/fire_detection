@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection - Statistics</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Header -->
+        <div class="mobile-header">
+            <h2 class="page-title">Statistics</h2>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content stats-content">
+            <h3 class="stats-period">This month:</h3>
+
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <p class="stat-label">Number of Wildfires</p>
+                    <p class="stat-number" id="wildfires-count">01</p>
+                    <p class="stat-change" id="wildfires-change">+0.1%</p>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">Number of Alerts</p>
+                    <p class="stat-number" id="alerts-count">03</p>
+                    <p class="stat-change" id="alerts-change">+0.2%</p>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">Number of False Alerts</p>
+                    <p class="stat-number" id="false-alerts-count">02</p>
+                    <p class="stat-change" id="false-alerts-change">-0.4%</p>
+                </div>
+
+                <div class="stat-box">
+                    <p class="stat-label">Protected Areas</p>
+                    <p class="stat-number" id="protected-count">16</p>
+                    <p class="stat-change" id="protected-change">+0.1%</p>
+                </div>
+            </div>
+
+            <div class="chart-placeholder">
+                <canvas id="stats-chart"></canvas>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+       <nav class="bottom-nav">
+            <a href="/mobile" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/cameras" class="nav-item"><i class="fas fa-video"></i><span>Cameras</span></a>
+            <a href="/info" class="nav-item"><i class="fas fa-info-circle"></i><span>Info</span></a>
+            <a href="/stats" class="nav-item active"><i class="fas fa-chart-line"></i><span>Stats</span></a>
+        </nav>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="{{ url_for('static', filename='js/stats.js') }}"></script>
+</body>
+</html>

@@ -3,26 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fire Detection System</title>
+    <title>Fire Detection - Home</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
     <div class="mobile-container">
-        <!-- Main Risk Card - Dynamic Color -->
-       <div class="risk-card" id="risk-card">
+        <!-- Header -->
+        <div class="mobile-header">
+            <div class="status-icons">
+                <span class="signal-icon">📶</span>
+                <span class="time" id="current-time">9:41</span>
+                <span class="battery-icon">🔋</span>
+            </div>
+        </div>
+
+        <!-- Main Risk Card -->
+        <div class="risk-card" id="risk-card">
             <h2 class="card-title">Overview</h2>
             
-            <!-- Large Circle with Percentage -->
             <div class="percentage-circle">
                 <div class="circle-inner">
                     <span class="percentage" id="risk-percentage">{{ fire_risk.percentage }}%</span>
                 </div>
             </div>
 
-            <!-- Risk Label -->
             <p class="risk-label" id="risk-label">{{ fire_risk.label }}</p>
 
-            <!-- Weather Stats -->
             <div class="weather-stats">
                 <div class="stat">
                     <span class="stat-icon">🌡️</span>
@@ -41,115 +48,26 @@
                 </div>
             </div>
 
-            <!-- Description -->
             <p class="risk-description" id="risk-description">
                 {{ fire_risk.description }}
             </p>
         </div>
 
         <!-- Footer Navigation -->
-        <div class="mobile-footer-nav">
-            <a href="#" class="nav-item active" id="home-nav">
-                <span class="nav-icon">🏠</span>
-                <span class="nav-label">Home</span>
-            </a>
-            <a href="#cameras" class="nav-item" id="camera-nav">
-                <span class="nav-icon">📷</span>
-                <span class="nav-label">Cameras</span>
-            </a>
-            <a href="#info" class="nav-item" id="info-nav">
-                <span class="nav-icon">ℹ️</span>
-                <span class="nav-label">Information</span>
-            </a>
-            <a href="#stats" class="nav-item" id="stats-nav">
-                <span class="nav-icon">📊</span>
-                <span class="nav-label">Statistics</span>
-            </a>
-        </div>
-
-        <!-- Hidden Cameras Section -->
-        <div id="cameras" class="section cameras-section" style="display: none;">
-            <div class="section-header">
-                <h2>Live Cameras</h2>
-                <button class="back-btn" onclick="showHome()">← Back</button>
-            </div>
-            <div id="cameras-container" class="cameras-container">
-                <p>No active cameras</p>
-            </div>
-        </div>
-
-        <!-- Hidden Info Section -->
-        <div id="info" class="section info-section" style="display: none;">
-            <div class="section-header">
-                <h2>Information</h2>
-                <button class="back-btn" onclick="showHome()">← Back</button>
-            </div>
-            <div class="info-content">
-                <h3>Fire Risk Levels</h3>
-                <div class="risk-level-info">
-                    <div class="risk-item risk-high">
-                        <span class="risk-color" style="background: #C1345D;"></span>
-                        <div>
-                            <strong>High Risk (70%+)</strong>
-                            <p>Avoid fire-related activities. Report suspicious activity immediately.</p>
-                        </div>
-                    </div>
-                    <div class="risk-item risk-medium">
-                        <span class="risk-color" style="background: #E67E22;"></span>
-                        <div>
-                            <strong>Medium Risk (40-70%)</strong>
-                            <p>Be vigilant and minimize fire-related risks.</p>
-                        </div>
-                    </div>
-                    <div class="risk-item risk-low">
-                        <span class="risk-color" style="background: #27AE60;"></span>
-                        <div>
-                            <strong>Low Risk (0-40%)</strong>
-                            <p>Continue normal activities while staying aware.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Weather Factors</h3>
-                <div class="factor-info">
-                    <p><strong>Temperature:</strong> Higher temperatures increase fire risk</p>
-                    <p><strong>Humidity:</strong> Lower humidity increases fire risk</p>
-                    <p><strong>Wind Speed:</strong> Higher wind speeds increase fire risk</p>
-                </div>
-
-                <h3>Location</h3>
-                <p id="location-info">Chisinau, Moldova</p>
-            </div>
-        </div>
-
-        <!-- Hidden Stats Section -->
-        <div id="stats" class="section stats-section" style="display: none;">
-            <div class="section-header">
-                <h2>Statistics</h2>
-                <button class="back-btn" onclick="showHome()">← Back</button>
-            </div>
-            <div class="stats-content">
-                <div class="stat-card">
-                    <p class="stat-title">Frames Processed</p>
-                    <p class="stat-big" id="frames-stat">0</p>
-                </div>
-                <div class="stat-card">
-                    <p class="stat-title">Active Clients</p>
-                    <p class="stat-big" id="clients-stat">0</p>
-                </div>
-                <div class="stat-card">
-                    <p class="stat-title">System Status</p>
-                    <p class="stat-big" id="system-stat">Online</p>
-                </div>
-                <div class="stat-card">
-                    <p class="stat-title">Last Detection</p>
-                    <p class="stat-small" id="last-detection-stat">Never</p>
-                </div>
-            </div>
-        </div>
+        <nav class="bottom-nav">
+            <a href="/mobile" class="nav-item active"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/cameras" class="nav-item"><i class="fas fa-video"></i><span>Cameras</span></a>
+            <a href="/info" class="nav-item"><i class="fas fa-info-circle"></i><span>Info</span></a>
+            <a href="/stats" class="nav-item"><i class="fas fa-chart-line"></i><span>Stats</span></a>
+        </nav>
     </div>
 
+    <script>
+        // Set initial card color
+        document.getElementById('risk-card').style.background = '{{ fire_risk.color }}';
+    </script>
+
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
-<script src="{{ url_for('static', filename='js/mobile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/mobile.js') }}"></script>
 </body>
 </html>

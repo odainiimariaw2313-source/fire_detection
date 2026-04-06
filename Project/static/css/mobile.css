@@ -11,6 +11,42 @@ html, body {
     background: #f5f5f5;
     overflow: hidden;
 }
+/* ============ FOOTER NAVIGATION ============ */
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: space-around;
+    padding: 15px 10px 30px 10px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+}
+
+.nav-item {
+    text-decoration: none;
+    color: #333;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.7rem;
+    gap: 5px;
+}
+
+.nav-item i {
+    font-size: 1.3rem;
+}
+
+.nav-item.active {
+    color: #000;
+    font-weight: bold;
+    border-bottom: 3px solid #000;
+    padding-bottom: 2px;
+}
+
 
 .mobile-container {
     display: flex;
@@ -18,8 +54,8 @@ html, body {
     height: 100vh;
     width: 100%;
     background: white;
+    overflow: hidden;
 }
-
 /* ============ HEADER ============ */
 
 .mobile-header {
@@ -32,6 +68,7 @@ html, body {
     font-weight: 600;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
     min-height: 44px;
+    flex-shrink: 0;
 }
 
 .status-icons {
@@ -52,10 +89,35 @@ html, body {
     font-weight: 600;
 }
 
-/* ============ MAIN CARD ============ */
+.page-title {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+    flex: 1;
+}
+
+
+.main-content {
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+}
+
+/* ============ PAGE CONTENT ============ */
+
+
+.page-content {
+    flex: 1;
+    padding: 16px;
+    overflow-y: auto;
+}
+
+/* ============ HOME PAGE - RISK CARD ============ */
 
 .risk-card {
-    flex: 1;
     margin: 16px;
     border-radius: 16px;
     padding: 24px;
@@ -64,19 +126,9 @@ html, body {
     align-items: center;
     gap: 16px;
     color: white;
-    overflow-y: auto;
     transition: all 0.3s ease;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.risk-card.updated {
-    animation: cardUpdate 0.5s ease;
-}
-
-@keyframes cardUpdate {
-    0% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.9; transform: scale(1.02); }
-    100% { opacity: 1; transform: scale(1); }
+    flex-shrink: 0;
 }
 
 .card-title {
@@ -84,8 +136,6 @@ html, body {
     font-weight: 600;
     margin-top: 8px;
 }
-
-/* ============ PERCENTAGE CIRCLE ============ */
 
 .percentage-circle {
     width: 180px;
@@ -97,6 +147,7 @@ html, body {
     justify-content: center;
     margin: 16px 0;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) inset;
+    flex-shrink: 0;
 }
 
 .circle-inner {
@@ -109,7 +160,6 @@ html, body {
     justify-content: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 .percentage {
     font-size: 56px;
     font-weight: 700;
@@ -121,8 +171,6 @@ html, body {
     font-weight: 500;
     margin-bottom: 8px;
 }
-
-/* ============ WEATHER STATS ============ */
 
 .weather-stats {
     display: flex;
@@ -157,261 +205,300 @@ html, body {
     opacity: 0.9;
 }
 
-/* ============ DESCRIPTION ============ */
-
 .risk-description {
     font-size: 14px;
     line-height: 1.6;
     text-align: center;
-    margin-top: 16px;
+    margin-top: 8px;
     opacity: 0.95;
 }
 
-/* ============ FOOTER NAVIGATION ============ */
 
-.mobile-footer-nav {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    background: white;
-    border-top: 1px solid #eee;
-    padding: 12px 0;
-    gap: 8px;
-    box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.08);
-    min-height: 60px;
-}
+/* ============ CAMERAS PAGE ============ */
 
-.nav-item {
+.map-container {
+    width: 100%;
+    height: 250px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    margin-bottom: 16px;
     display: flex;
-    flex-direction: column;
     align-items: center;
-    gap: 6px;
-    text-decoration: none;
+    justify-content: center;
     color: #999;
-    font-size: 12px;
-    flex: 1;
-    transition: all 0.3s ease;
-    padding: 8px;
-    border-radius: 8px;
-    cursor: pointer;
+    font-weight: 500;
+    overflow: hidden;
 }
 
-.nav-item.active {
-    color: #333;
-    background: #f0f0f0;
-}
-
-.nav-item:hover:not(.active) {
-    color: #666;
-}
-
-.nav-icon {
-    font-size: 24px;
-}
-
-.nav-label {
-    font-size: 10px;
-}
-
-/* ============ SECTIONS ============ */
-
-.section {
-    flex: 1;
+.cameras-list {
     display: flex;
     flex-direction: column;
-    padding: 16px;
-    overflow-y: auto;
-    background: white;
-    gap: 16px;
+    gap: 12px;
 }
 
-.section-header {
+.section-subtitle {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+#cameras-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.camera-item {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
-}
-
-.section-header h2 {
-    font-size: 22px;
-    color: #333;
-    margin: 0;
-}
-
-.back-btn {
-    background: #f0f0f0;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: background 0.2s ease;
-    color: #333;
-    font-weight: 500;
-}
-
-.back-btn:active {
-    background: #e0e0e0;
-}
-
-/* ============ CAMERAS SECTION ============ */
-
-.cameras-section {
-    display: none;
-}
-
-.cameras-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-/* ============ INFO SECTION ============ */
-
-.info-section {
-    display: none;
-}
-
-.info-content {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.info-content h3 {
-    font-size: 16px;
-    color: #333;
-    margin-top: 8px;
-    margin-bottom: 8px;
-}
-
-.info-content p {
-    color: #666;
-    line-height: 1.6;
-    font-size: 14px;
-    margin: 0;
-}
-
-.risk-level-info {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-}
-
-.risk-item {
-    display: flex;
-    gap: 12px;
+    background: white;
     padding: 12px;
     border-radius: 8px;
-    background: #f9f9f9;
-    align-items: flex-start;
+    border: 1px solid #eee;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.risk-color {
-    width: 8px;
-    height: 8px;
+.camera-info-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+
+.camera-status {
+    width: 12px;
+    height: 12px;
     border-radius: 50%;
-    margin-top: 4px;
     flex-shrink: 0;
 }
 
-.risk-item strong {
-    color: #333;
-    display: block;
-    margin-bottom: 4px;
-    font-size: 14px;
+.camera-status.online {
+    background: #10b981;
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.5);
 }
 
-.risk-item p {
-    margin: 0;
-    font-size: 12px;
-    color: #666;
+.camera-status.offline {
+    background: #ef4444;
 }
 
-.factor-info {
+.camera-details {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 2px;
 }
 
-.factor-info p {
-    margin: 0;
+.camera-name {
     font-size: 14px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
 }
 
-/* ============ STATS SECTION ============ */
-
-.stats-section {
-    display: none;
+.camera-location {
+    font-size: 12px;
+    color: #999;
+    margin: 0;
 }
+
+.camera-signal {
+    font-size: 16px;
+}
+
+/* ============ INFORMATION PAGE ============ */
+
+
+.info-item {
+    flex: 1;
+}
+
+.info-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.info-icon {
+    font-size: 32px;
+}
+
+.info-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.info-description {
+    font-size: 11px;
+    color: #666;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.info-footer {
+    background: #f9f9f9;
+    padding: 16px;
+    border-radius: 12px;
+    margin-top: 16px;
+    border-left: 4px solid #27AE60;
+}
+
+.info-footer p {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 8px;
+}
+/*
+.info-footer p:last-child {
+    margin-bottom: 0;
+    color: #333;
+    font-weight: 600;
+}*/
+
+/* ============ STATISTICS PAGE ============ */
 
 .stats-content {
+    display: flex;
+    flex-direction: column !important;
+    gap: 20px;
+}
+
+.stats-period {
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.stats-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 12px;
 }
 
-.stat-card {
-    background: #f9f9f9;
+.stat-box {
+    background: white;
     padding: 16px;
     border-radius: 12px;
-    text-align: center;
     border: 1px solid #eee;
+    text-align: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-.stat-title {
+.stat-box .stat-label {
     font-size: 12px;
     color: #999;
     margin-bottom: 8px;
-    margin: 0 0 8px 0;
+    margin: 0;
 }
 
-.stat-big {
-    font-size: 28px;
+.stat-number {
+    font-size: 32px;
     font-weight: 700;
     color: #333;
+    margin-bottom: 4px;
+    margin: 0 0 4px 0;
+}
+
+.stat-change {
+    font-size: 12px;
+    font-weight: 600;
+    color: #10b981;
     margin: 0;
 }
 
-.stat-small {
-    font-size: 14px;
-    color: #666;
-    margin: 0;
+.stat-change.negative {
+    color: #ef4444;
 }
+
+.chart-placeholder {
+    background: white;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    min-height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#stats-chart {
+    width: 100% !important;
+    height: 250px !important;
+}
+
 
 /* ============ SCROLLBAR ============ */
 
-.risk-card::-webkit-scrollbar,
-.section::-webkit-scrollbar {
+.main-content::-webkit-scrollbar,
+.page-content::-webkit-scrollbar {
     width: 6px;
 }
 
-.risk-card::-webkit-scrollbar-track,
-.section::-webkit-scrollbar-track {
+.main-content::-webkit-scrollbar-track,
+.page-content::-webkit-scrollbar-track {
     background: rgba(0, 0, 0, 0.05);
     border-radius: 3px;
 }
 
-.risk-card::-webkit-scrollbar-thumb,
-.section::-webkit-scrollbar-thumb {
+.main-content::-webkit-scrollbar-thumb,
+.page-content::-webkit-scrollbar-thumb {
     background: rgba(0, 0, 0, 0.2);
     border-radius: 3px;
 }
 
-/* ============ ANIMATIONS ============ */
+/* ============ INFORMATION PAGE ============ */
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(10px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+.info-content {
+    display: flex;
+    flex-direction: column !important;
 }
 
-/* ============ RESPONSIVE DESIGN ============ */
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr;  /* Changed from: 1fr 1fr */
+    gap: 12px;
+    margin: 16px 0;
+}
+
+
+.info-card {
+    background: white;
+    padding: 12px;
+    border-radius: 12px;
+    border: 1px solid #eee;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    height: 100%;
+}
+
+
+.info-image {
+    width: 100%;
+    height: 200px;
+    border-radius: 8px;
+    overflow: hidden;
+    background: linear-gradient(135deg, #e5e7eb 0%, #d1d5db 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info-image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+
+/* ============ RESPONSIVE ============ */
 
 @media (max-height: 600px) {
     .percentage-circle {
@@ -435,110 +522,15 @@ html, body {
 }
 
 @media (max-width: 375px) {
-    .card-title {
-        font-size: 20px;
-    }
-
-    .percentage-circle {
-        width: 160px;
-        height: 160px;
-    }
-
-    .circle-inner {
-        width: 140px;
-        height: 140px;
-    }
-
-    .percentage {
-        font-size: 48px;
-    }
-
-    .risk-card {
-        margin: 12px;
-        padding: 16px;
-        gap: 12px;
-    }
-
-    .weather-stats {
-        gap: 8px;
-        padding: 8px;
-    }
-
-    .stat-icon {
-        font-size: 24px;
-    }
-
-    .stat-value {
-        font-size: 12px;
-    }
-
-    .stat-label {
-        font-size: 10px;
-    }
-
-    .risk-description {
-        font-size: 13px;
-    }
-
-    .section {
-        padding: 12px;
-    }
-
-    .section-header h2 {
-        font-size: 18px;
-    }
-
-    .info-content h3 {
-        font-size: 14px;
-    }
-
-    .info-content p {
-        font-size: 13px;
-    }
-
-    .stats-content {
+    .info-grid {
         grid-template-columns: 1fr;
-        gap: 10px;
     }
 
-    .stat-card {
-        padding: 12px;
+    .stats-grid {
+        grid-template-columns: 1fr;
     }
-
-    .stat-big {
-        font-size: 24px;
-    }
-}
-
-@media (orientation: landscape) {
-    .mobile-header {
-        min-height: 32px;
-    }
-
-    .mobile-footer-nav {
-        min-height: 50px;
-    }
-
-    .percentage-circle {
-        width: 120px;
-        height: 120px;
-    }
-
-    .circle-inner {
-        width: 100px;
-        height: 100px;
-    }
-
-    .percentage {
-        font-size: 36px;
-    }
-
-    .card-title {
-        font-size: 18px;
-    }
-
     .risk-card {
         margin: 8px;
-        padding: 12px;
+        padding: 16px;
     }
 }

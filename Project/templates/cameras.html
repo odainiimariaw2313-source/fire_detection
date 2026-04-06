@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fire Detection - Cameras</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/mobile.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body>
+    <div class="mobile-container">
+        <!-- Header -->
+        <div class="mobile-header">
+            <h2 class="page-title">Cameras</h2>
+        </div>
+
+        <!-- Page Content -->
+        <div class="page-content">
+            <!-- Map Container -->
+            <div class="map-container" id="map"></div>
+
+            <!-- Camera List -->
+            <div class="cameras-list">
+                <h3 class="section-subtitle">Active Cameras</h3>
+                <div id="cameras-container">
+                    <div class="camera-item">
+                        <div class="camera-info-box">
+                            <span class="camera-status online"></span>
+                            <div class="camera-details">
+                                <p class="camera-name">Camera 1</p>
+                                <p class="camera-location">North Zone</p>
+                            </div>
+                        </div>
+                        <span class="camera-signal">📶</span>
+                    </div>
+                    <div class="camera-item">
+                        <div class="camera-info-box">
+                            <span class="camera-status online"></span>
+                            <div class="camera-details">
+                                <p class="camera-name">Camera 2</p>
+                                <p class="camera-location">South Zone</p>
+                            </div>
+                        </div>
+                        <span class="camera-signal">📶</span>
+                    </div>
+                    <div class="camera-item">
+                        <div class="camera-info-box">
+                            <span class="camera-status offline"></span>
+                            <div class="camera-details">
+                                <p class="camera-name">Camera 3</p>
+                                <p class="camera-location">West Zone</p>
+                            </div>
+                        </div>
+                        <span class="camera-signal">❌</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Navigation -->
+        <nav class="bottom-nav">
+            <a href="/mobile" class="nav-item"><i class="fas fa-home"></i><span>Home</span></a>
+            <a href="/cameras" class="nav-item active"><i class="fas fa-video"></i><span>Cameras</span></a>
+            <a href="/info" class="nav-item"><i class="fas fa-info-circle"></i><span>Info</span></a>
+            <a href="/stats" class="nav-item"><i class="fas fa-chart-line"></i><span>Stats</span></a>
+        </nav>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="{{ url_for('static', filename='js/cameras.js') }}"></script>
+</body>
+</html>
