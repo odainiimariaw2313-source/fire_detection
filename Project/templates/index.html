@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔥 Fire Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1>🔥 Fire Detection System</h1>
+                <p class="subtitle">Real-time Fire Detection Dashboard</p>
+            </div>
+            <div class="status-indicator">
+                <span id="systemStatus" class="status-dot online"></span>
+                <span id="statusText">System Online</span>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard">
+            <!-- Status Section -->
+            <section class="status-section">
+                <div class="card">
+                    <h2>System Status</h2>
+                    <div class="status-grid">
+                        <div class="status-item">
+                            <span class="label">Connected Clients</span>
+                            <span id="connectedClients" class="value">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Frames Processed</span>
+                            <span id="frameCount" class="value">0</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Average Confidence</span>
+                            <span id="avgConfidence" class="value">0%</span>
+                        </div>
+                        <div class="status-item">
+                            <span class="label">Uptime</span>
+                            <span id="uptime" class="value">0s</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fire Detection Alert -->
+            <section class="alert-section">
+                <div id="fireAlert" class="alert alert-hidden">
+                    <div class="alert-content">
+                        <h3>🚨 FIRE DETECTED!</h3>
+                        <p id="alertMessage">Fire detected in camera feed</p>
+                        <p id="alertTime" class="alert-time"></p>
+                        <button id="acknowledgeBtn" class="btn btn-danger">Acknowledge Alert</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Detection Details -->
+            <section class="detection-section">
+                <div class="card">
+                    <h2>Current Detection Status</h2>
+                    <div class="detection-details">
+                        <div class="detail-item">
+                            <span class="label">Fire Status</span>
+                            <span id="fireStatus" class="value status-normal">No Fire</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Confidence Level</span>
+                            <div id="confidenceBar" class="progress-bar">
+                                <div id="confidenceFill" class="progress-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="confidenceValue" class="value">0%</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Last Detection</span>
+                            <span id="lastDetection" class="value">--:--:--</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Camera ID</span>
+                            <span id="cameraId" class="value">camera_1</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Recent Detections -->
+            <section class="history-section">
+                <div class="card">
+                    <h2>Detection History</h2>
+                    <div id="detectionHistory" class="detection-list">
+                        <p class="empty-state">No detections yet...</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Control Panel -->
+            <section class="control-section">
+                <div class="card">
+                    <h2>Control Panel</h2>
+                    <div class="controls">
+                        <button id="resetAlertBtn" class="btn btn-warning">Reset Alert</button>
+                        <button id="clearHistoryBtn" class="btn btn-secondary">Clear History</button>
+                        <button id="exportDataBtn" class="btn btn-info">Export Data</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2026 Fire Detection System | Educational Project</p>
+        </footer>
+    </div>
+
+    <!-- WebSocket Connection -->
+    <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
+    <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+</html>
